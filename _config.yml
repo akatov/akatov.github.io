@@ -1,0 +1,12 @@
+title: "Dmitri's Blog"
+email: dmitri@akatov.com
+description: > # this means to ignore newlines until "baseurl:"
+  Musings and Ramblings of a Software Engineer
+baseurl: "" # the subpath of your site, e.g. /blog
+url: akatov.com # the base hostname & protocol for your site, e.g. http://example.com
+twitter_username: akatov
+github_username:  akatov
+markdown: kramdown
+theme: minima
+gems:
+  - jekyll-feed
