@@ -72,3 +72,35 @@ Let's look up what all these classnames mean on
 
 As we can see, the `no-wrap` class in one of the `div` tags is
 in fact superfluous, since it is subsumed by the `truncate` class.
+
+## Styling kramdown
+
+The [kramdown](https://kramdown.gettalong.org/) engine used by jekyll allows for
+[inline attributes](https://kramdown.gettalong.org/quickref.html#block-attributes),
+with an easy shortcut for classnames and re-use through *attribute list definitions*:
+
+```markdown
+> A padded outlined blockquote
+{: .pa4 .outline}
+
+{::comment}The following line defines a reusable ALD{:/comment}
+{:my-paragraph: .fl .w-50 .outline .pv1 .ph4}
+
+This custom paragraph is red
+{:my-paragraph .bg-red}
+
+And this one is blue
+{:my-paragraph .bg-blue}
+```
+
+> A padded outlined blockquote
+{: .pa4 .outline}
+
+{::comment}The following line defines a reusable ALD{:/comment}
+{:my-paragraph: .fl .w-50 .outline .pv1 .ph4}
+
+This custom paragraph is red
+{:my-paragraph .bg-red}
+
+And this one is blue
+{:my-paragraph .bg-blue}
