@@ -104,3 +104,46 @@ This custom paragraph is red
 
 And this one is blue
 {:my-paragraph .bg-blue}
+
+## Styling the Layouts
+
+Styling inline HTML may be all fun and games;
+styling markdown directly looks slightly more useful,
+but if we're actually trying to use Tachyons as much as possible,
+we need to look at the layout templates.
+A good starting point looks like trying to reproduce minima's layout
+using Tachyons, before trying to actually customize it.
+
+Let's start by looking at
+[minima's sass](https://github.com/jekyll/minima/blob/master/_sass/minima.scss):
+
+```scss
+...
+
+// Import partials.
+@import
+  "minima/base",
+  "minima/layout",
+  "minima/syntax-highlighting"
+;
+```
+
+This gives us a hint at where the
+[layout styles](https://github.com/jekyll/minima/blob/master/_sass/minima/_layout.scss)
+are defined.
+Let's pick out the first one (`.site-header`) and replace it.
+Let's find where it is used using
+[the_silver_searcher](https://github.com/ggreer/the_silver_searcher):
+
+```sh
+ag site-header $(bundle show minima)
+```
+
+The file in question is
+[`_includes/header.html`](https://github.com/jekyll/minima/blob/master/_includes/header.html).
+So let's copy it locally so we can edit it.
+
+```sh
+mkdir _includes
+cp $(bundle show minima)/_includes/header.html _includes
+```
