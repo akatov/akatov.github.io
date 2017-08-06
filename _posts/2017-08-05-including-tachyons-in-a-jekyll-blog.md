@@ -147,3 +147,61 @@ So let's copy it locally so we can edit it.
 mkdir _includes
 cp $(bundle show minima)/_includes/header.html _includes
 ```
+
+We now need to replace the class `site-header` with Tachyons classes
+such that the resulting styles more or less resemble:
+
+```css
+.site-header {
+  border-top: 5px solid #424242;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 55.95px
+  position: relative;
+}
+```
+
+Again, let's use [tachyons tldr](https://tachyons-tldr.now.sh/#/classes),
+to find the right classes.
+This time searching by CSS property names helps to get started,
+but after figuring out the structure of Tachyon's classname acronyms,
+we can quickly switch back to search by class name.
+[w3schools CSS Reference](https://www.w3schools.com/cssref/) is also very useful here.
+
+The closest we can get to it is `bt bb b--gray h4 relative`,
+since we are missing definitions for `border-top` widths other than `1px`,
+and for `border-bottom-color` and `border-top-color`.
+
+To define our own classes, we first need to copy the
+[`assets/main.scss`](https://github.com/jekyll/minima/blob/master/assets/main.scss)
+file from minima.
+
+```bash
+mkdir assets
+cp $(bundle show minima)/assets/main.scss assets
+```
+
+Now we can modify this file to include the following classes:
+
+```css
+.bb--light-gray {
+  border-bottom-color: #eee;
+}
+
+.bt--dark-gray {
+  border-top-color: #333;
+}
+
+.bt1 {
+  border-top-width: .25rem;
+}
+```
+
+and all that's left to do now is to include these classes in the header tag:
+
+```html
+<header class="bt bt1 bt--dark-gray bb bb--light-gray h3 relative" role="banner">
+  ...
+</header>
+```
+
+The remainder of the layout classes can be "removed" in a similar fashion gradually.
