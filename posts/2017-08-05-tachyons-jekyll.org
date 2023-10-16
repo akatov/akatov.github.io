@@ -1,0 +1,220 @@
+#+TITLE: Including Tachyons in a Jekyll Blog
+#+DATE: <2017-08-05>
+#+OPTIONS: toc:nil num:nil
+#+OPTIONS: ^:nil
+
+** Getting Started
+:PROPERTIES:
+:CUSTOM_ID: getting-started
+:END:
+Let's copy the [[https://github.com/jekyll/minima][minima theme]]
+default layout template locally so we can modify it.
+
+#+begin_src sh
+mkdir _includes
+cp $(bundle show minima)/_includes/head.html _includes
+#+end_src
+
+Include the the following line taken from the
+[[http://tachyons.io/#getting-started][getting started]] section of
+[[https://github.com/tachyons-css/tachyons/][Tachyons]] into the
+=head.html= file, before the links to the other stylesheets.
+
+#+begin_src html
+<link rel="stylesheet" href="https://unpkg.com/tachyons@4.7.0/css/tachyons.min.css"/>
+#+end_src
+
+We are now ready to try out Tachyons. Let's copy an example from the
+/GRIDS/ section in the tachyons [[http://tachyons.io/#style][style
+guide]]:
+
+#+begin_src html
+<div class="fl w-75 pa2">
+  <div class="outline bg-white tc pv4">
+    <code>fl w-75</code>
+  </div>
+</div>
+<div class="fl w-25 pa2">
+  <div class="outline bg-white tc pv4 truncate no-wrap">
+    <code>fl w-25</code>
+  </div>
+</div>
+#+end_src
+
+this produces:
+
+#+begin_export html
+<div class="fl w-75 pa2">
+  <div class="outline bg-white tc pv4">
+    <code>fl w-75</code>
+  </div>
+</div>
+<div class="fl w-25 pa2">
+  <div class="outline bg-white tc pv4 truncate no-wrap">
+    <code>fl w-25</code>
+  </div>
+</div>
+#+end_export
+
+Let's look up what all these classnames mean on
+[[https://tachyons-tldr.now.sh/#/classes][tachyons tldr]].
+
+| Class       | [[https://en.wikipedia.org/wiki/Acrostic][Acrostic]] | CSS                                                            |
+|-------------+------------------------------------------------------+----------------------------------------------------------------|
+| =.fl=       | float left                                           | =float:left; display:inline=                                   |
+| =.w-75=     | width 75%                                            | =width: 75%=                                                   |
+| =.pa2=      | padding all 2units                                   | =padding: .5rem=                                               |
+| =.outline=  |                                                      | =outline: 1px solid=                                           |
+| =.bg-white= | back-ground white                                    | =backgroundColor: #fff=                                        |
+| =.tc=       | text center                                          | =textAlign: center=                                            |
+| =.pv4=      | padding vertical 4units                              | =paddingTop: 2rem; paddingBottom: 2rem=                        |
+| =.truncate= |                                                      | =whiteSpace: nowrap; overflow: hidden; textOverflow: ellipsis= |
+| =.no-wrap=  |                                                      | =whiteSpace: nowrap=                                           |
+
+As we can see, the =no-wrap= class in one of the =div= tags is in fact
+superfluous, since it is subsumed by the =truncate= class.
+
+** Styling kramdown
+:PROPERTIES:
+:CUSTOM_ID: styling-kramdown
+:END:
+The [[https://kramdown.gettalong.org/][kramdown]] engine used by jekyll
+allows for
+[[https://kramdown.gettalong.org/quickref.html#block-attributes][inline
+attributes]], with an easy shortcut for classnames and re-use through
+/attribute list definitions/:
+
+#+begin_src markdown
+> A padded outlined blockquote
+{: .pa4 .outline}
+
+{::comment}The following line defines a reusable ALD{:/comment}
+{:my-paragraph: .fl .w-50 .outline .pv1 .ph4}
+
+This custom paragraph is red
+{:my-paragraph .bg-red}
+
+And this one is blue
+{:my-paragraph .bg-blue}
+#+end_src
+
+#+attr_html: :style padding: 2rem; outline: 1px solid;
+#+begin_quote
+A padded outlined blockquote
+#+end_quote
+
+#+begin_export html
+
+  <p style="float:left; display: inline; width: 39%; outline: 1px solid; padding-top: .25rem; padding-bottom: .25rem; padding-left: 2rem; padding-right: 2rem; background-color: #ff4136">
+    This custom paragraph is red
+  </p>
+  <p style="float:left; display: inline; width: 39%; outline: 1px solid; padding-top: .25rem; padding-bottom: .25rem; padding-left: 2rem; padding-right: 2rem; background-color: #357edd">
+    And this one is blue
+  </p>
+
+
+#+end_export
+
+** Styling the Layouts
+:PROPERTIES:
+:CUSTOM_ID: styling-the-layouts
+:END:
+Styling inline HTML may be all fun and games; styling markdown directly
+looks slightly more useful, but if we're actually trying to use Tachyons
+as much as possible, we need to look at the layout templates. A good
+starting point looks like trying to reproduce minima's layout using
+Tachyons, before trying to actually customize it.
+
+Let's start by looking at
+[[https://github.com/jekyll/minima/blob/master/_sass/minima.scss][minima's
+sass]]:
+
+#+begin_src scss
+...
+
+// Import partials.
+@import
+  "minima/base",
+  "minima/layout",
+  "minima/syntax-highlighting"
+;
+#+end_src
+
+This gives us a hint at where the
+[[https://github.com/jekyll/minima/blob/master/_sass/minima/_layout.scss][layout
+styles]] are defined. Let's pick out the first one (=.site-header=) and
+replace it. Let's find where it is used using
+[[https://github.com/ggreer/the_silver_searcher][the_silver_searcher]]:
+
+#+begin_src sh
+ag site-header $(bundle show minima)
+#+end_src
+
+The file in question is
+[[https://github.com/jekyll/minima/blob/master/_includes/header.html][=_includes/header.html=]].
+So let's copy it locally so we can edit it.
+
+#+begin_src sh
+mkdir _includes
+cp $(bundle show minima)/_includes/header.html _includes
+#+end_src
+
+We now need to replace the class =site-header= with Tachyons classes
+such that the resulting styles more or less resemble:
+
+#+begin_src css
+.site-header {
+  border-top: 5px solid #424242;
+  border-bottom: 1px solid #e8e8e8;
+  min-height: 55.95px
+  position: relative;
+}
+#+end_src
+
+Again, let's use [[https://tachyons-tldr.now.sh/#/classes][tachyons
+tldr]], to find the right classes. This time searching by CSS property
+names helps to get started, but after figuring out the structure of
+Tachyon's classname acronyms, we can quickly switch back to search by
+class name. [[https://www.w3schools.com/cssref/][w3schools CSS
+Reference]] is also very useful here.
+
+The closest we can get to it is =bt bb b--gray h4 relative=, since we
+are missing definitions for =border-top= widths other than =1px=, and
+for =border-bottom-color= and =border-top-color=.
+
+To define our own classes, we first need to copy the
+[[https://github.com/jekyll/minima/blob/master/assets/main.scss][=assets/main.scss=]]
+file from minima.
+
+#+begin_src sh
+mkdir assets
+cp $(bundle show minima)/assets/main.scss assets
+#+end_src
+
+Now we can modify this file to include the following classes:
+
+#+begin_src css
+.bb--light-gray {
+  border-bottom-color: #eee;
+}
+
+.bt--dark-gray {
+  border-top-color: #333;
+}
+
+.bt1 {
+  border-top-width: .25rem;
+}
+#+end_src
+
+and all that's left to do now is to include these classes in the header
+tag:
+
+#+begin_src html
+<header class="bt bt1 bt--dark-gray bb bb--light-gray h3 relative" role="banner">
+  ...
+</header>
+#+end_src
+
+The remainder of the layout classes can be "removed" in a similar
+fashion gradually.
