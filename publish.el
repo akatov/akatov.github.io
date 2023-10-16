@@ -24,8 +24,12 @@
 
 (require 'weblorg)
 
+(add-to-list 'load-path "./")
+(require 'site)
+
 ;; Generate blog posts
 (weblorg-route
+ :site site
  :name "posts"
  :input-pattern "posts/*.org"
  :template "post.html"
@@ -34,6 +38,7 @@
 
 ;; Generate pages
 (weblorg-route
+ :site site
  :name "pages"
  :input-pattern "pages/*.org"
  :template "page.html"
@@ -42,6 +47,7 @@
 
 ;; Generate posts summary
 (weblorg-route
+ :site site
  :name "index"
  :input-pattern "posts/*.org"
  :input-aggregate #'weblorg-input-aggregate-all-desc
@@ -50,6 +56,7 @@
  :url "/")
 
 (weblorg-route
+ :site site
  :name "feed"
  :input-pattern "posts/*.org"
  :input-aggregate #'weblorg-input-aggregate-all-desc
@@ -58,6 +65,7 @@
  :url "/feed.xml")
 
 (weblorg-copy-static
+ :site site
  :output "output/static/{{ file }}"
  :url "/static/{{ file }}")
 

@@ -27,6 +27,8 @@ jobs:
 
       - name: Publish Org Files
         uses: maker2413/weblorg-action@v1.0.0
+        with:
+          pre_build_script: pre-prod.sh
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v2
