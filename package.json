@@ -1,0 +1,23 @@
+{
+  "name": "akatov.github.io",
+  "version": "1.0.0",
+  "description": "Dmitri's Blog",
+  "scripts": {
+    "css:build": "postcss --output theme/static/style.css theme/templates/style.css",
+    "css:dev": "postcss --watch --output theme/static/style.css theme/templates/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/akatov/akatov.github.io.git"
+  },
+  "author": "Dmitri Akatov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/akatov/akatov.github.io/issues"
+  },
+  "homepage": "https://github.com/akatov/akatov.github.io#readme",
+  "devDependencies": {
+    "postcss": "8.4.31",
+    "postcss-cli": "10.1.0"
+  }
+}
