@@ -22,6 +22,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.x
+
+      - name: generate CSS
+        run: npm ci && npm run css:build
+
       - name: Setup Pages
         uses: actions/configure-pages@v3
 
@@ -43,4 +51,5 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - name: Deploy to GitHub Pages
+        id: deployment
         uses: actions/deploy-pages@v2
