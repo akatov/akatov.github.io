@@ -44,13 +44,13 @@ guide]]:
 this produces:
 
 #+begin_export html
-<div class="fl w-75 pa2">
-  <div class="outline bg-white tc pv4">
+<div class="float-left w-[75%] p-2">
+  <div class="outline bg-white text-center py-4">
     <code>fl w-75</code>
   </div>
 </div>
-<div class="fl w-25 pa2">
-  <div class="outline bg-white tc pv4 truncate no-wrap">
+<div class="float-left w-[25%] p-2">
+  <div class="outline bg-white text-center py-4 truncate">
     <code>fl w-25</code>
   </div>
 </div>
@@ -104,15 +104,12 @@ A padded outlined blockquote
 #+end_quote
 
 #+begin_export html
-
-  <p style="float:left; display: inline; width: 39%; outline: 1px solid; padding-top: .25rem; padding-bottom: .25rem; padding-left: 2rem; padding-right: 2rem; background-color: #ff4136">
-    This custom paragraph is red
-  </p>
-  <p style="float:left; display: inline; width: 39%; outline: 1px solid; padding-top: .25rem; padding-bottom: .25rem; padding-left: 2rem; padding-right: 2rem; background-color: #357edd">
-    And this one is blue
-  </p>
-
-
+<p class="float-left inline w-[50%] outline py-1 px-4 bg-[#ff4136]">
+  This custom paragraph is red
+</p>
+<p class="float-left inline w-[50%] outline py-1 px-4 bg-[#357edd]">
+  And this one is blue
+</p>
 #+end_export
 
 ** Styling the Layouts
