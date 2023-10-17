@@ -6,6 +6,7 @@ cat <<EOF > site.el
 (setq
  site
  (weblorg-site
+  :theme (lambda () "theme")
   :base-url "https://akatov.github.io"
   :template-vars
   '(("site_name" . "Dmitri's Blog")

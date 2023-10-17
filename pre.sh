@@ -6,6 +6,7 @@ cat <<EOF > site.el
 (setq
  site
  (weblorg-site
+  :theme (lambda () "theme")
   :base-url "http://localhost:8000"
   :template-vars
   '(("site_name" . "Dmitri's Blog (dev)")
@@ -14,3 +15,5 @@ cat <<EOF > site.el
 
 (provide 'site)
 EOF
+
+echo "finished pre.sh"
