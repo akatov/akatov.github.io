@@ -3,9 +3,9 @@
 {% block main %}
   <h1>Blog Posts</h1>
 
-  <ul class="posts">
+  <ul>
     {% for post in posts %}
-      <li class="post-title">
+      <li class="mb-[20px]">
         <a href="{{ url_for("posts", slug=post.slug) }}">
           {% if post.date is defined %}
             {{ post.date|strftime("%b %d, %Y") }} &mdash;

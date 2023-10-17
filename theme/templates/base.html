@@ -16,33 +16,37 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora&family=Space+Mono&display=swap" />
     {% endblock %}
   </head>
-  <body>
+  <body class="font-serif bg-cl-background text-cl-foreground m-0 p-0 min-h-screen flex flex-col">
     {# Top navigation bar #}
     {% block nav %}
-      <header>
-        <h1>
+      <header class="flex justify-between items-center py-[10px] px-[30px] mb-[40px] border-b border-solid border-b-cl-border">
+        <h1 class="text-2xl">
           <a href="{{ url_for("index") }}">
             {% block title %}{{ site_name | default("weblorg website") }}{% endblock %}
           </a>
         </h1>
-        <a href="#main" class="visually-hidden">jump to main content</a>
-        <nav>
-          <ul class="menu">
-            <li><a href="{{ url_for("pages", slug="about") }}">about</a></li>
-            <li><a href="{{ url_for("index") }}">blog</a></li>
-          </ul>
+        <a href="#main" class="hidden">jump to main content</a>
+        <nav class="flex items-center">
+          <ul class="m-0 p-0">
+            <li class="inline pl-[50px] cursor-pointer">
+              <a class="text-cl-foreground text-base font-bold" href="{{ url_for("pages", slug="about") }}">about</a>
+            </li>
+            <li class="inline pl-[50px] cursor-pointer">
+              <a class="text-cl-foreground text-base font-bold" href="{{ url_for("index") }}">blog</a>
+            </li>
+          </ul=>
         </nav>
       </header>
     {% endblock %}
 
     {# Probably where most of the action will happen #}
-    <main id="main">
+    <main id="main" class="p-[10px] w-[calc(100%-20px)] sm:p-0 sm:w-[600px] my-0 mx-auto flex-grow">
       {% block main %}{% endblock %}
     </main>
 
     {# Links, copyright notice, etc #}
     {% block footer %}
-      <footer>
+      <footer class="bg-cl-foreground text-cl-background h-[70px] flex items-center justify-center">
         Made with &#x2665; and&nbsp;
         <a href="https://emacs.love/weblorg" target="_blank">
           weblorg

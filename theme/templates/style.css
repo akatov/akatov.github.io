@@ -38,42 +38,6 @@
 @tailwind utilities;
 
 @layer base {
-  body {
-    @apply font-serif bg-cl-background text-cl-foreground m-0 p-0 min-h-screen flex flex-col;
-  }
-
-  header {
-    @apply flex justify-between items-center py-[10px] px-[30px] mb-[40px] border-b border-solid border-b-cl-border;
-  }
-  header h1 {
-    @apply text-2xl;
-  }
-  header nav {
-    @apply flex items-center;
-  }
-  header nav ul {
-    @apply m-0 p-0;
-  }
-  header nav ul li {
-    @apply inline;
-  }
-}
-
-@layer components {
-  /* helper classes */
-  .visually-hidden {
-    @apply hidden;
-  }
-
-  .menu li {
-    @apply pl-[50px] cursor-pointer;
-  }
-  .menu a {
-    @apply text-cl-foreground text-base font-bold;
-  }
-}
-
-@layer base {
   /* -- main content -- */
   a {
     @apply text-cl-link underline hover:no-underline;
@@ -83,17 +47,6 @@
   }
   h2 {
     @apply text-2xl font-bold;
-  }
-  main {
-    @apply p-[10px] w-[calc(100%-20px)];
-    @apply sm:p-0 sm:w-[600px];
-    @apply my-0 mx-auto flex-grow;
-  }
-  article h1:first-child {
-    @apply text-4xl;
-  }
-  .post__meta {
-    @apply text-sm text-cl-gray;
   }
 
   /* -- table -- */
@@ -114,11 +67,6 @@
     @apply m-0 p-0;
   }
 
-  /* -- Page -- */
-  li.post-title {
-    @apply mb-[20px];
-  }
-
   /* -- Code Blocks -- */
   .org-builtin          { @apply text-cl-code-builtin }
   .org-doc              {
@@ -134,12 +82,5 @@
     @apply text-cl-code-foreground bg-cl-code-background border border-solid;
     /* @apply border-cl-border-src; // this is missing! */
     @apply py-0 px-[15px] max-w-[100%] overflow-y-scroll rounded-[5px];
-  }
-}
-
-@layer base {
-  /* -- Footer --*/
-  footer {
-    @apply bg-cl-foreground text-cl-background h-[70px] flex items-center justify-center;
   }
 }

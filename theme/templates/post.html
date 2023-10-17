@@ -17,11 +17,11 @@
 {% endblock %}
 
 {% block main %}
-  <article class="post">
-    <h1 class="post__title">
+  <article>
+    <h1 class="text-4xl">
       {{ post.title }}
     </h1>
-    <section class="post__meta">
+    <section class="text-sm text-cl-gray">
       {% if post.date is defined %}
         {{ post.date|strftime("%b %d, %Y") }}
       {% endif %}
