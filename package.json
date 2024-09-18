@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "Dmitri's Blog",
   "scripts": {
+    "build": "npx @11ty/eleventy",
+    "start": "npx @11ty/eleventy --serve --incremental",
     "css:build": "postcss --output theme/static/style.css theme/templates/style.css",
     "css:dev": "postcss --watch --output theme/static/style.css theme/templates/style.css"
   },
