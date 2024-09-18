@@ -16,6 +16,7 @@
     "url": "https://github.com/akatov/akatov.github.io/issues"
   },
   "homepage": "https://github.com/akatov/akatov.github.io#readme",
+  "type": "module",
   "devDependencies": {
     "autoprefixer": "10.4.16",
     "postcss": "8.4.31",
