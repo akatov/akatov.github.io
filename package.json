@@ -3,8 +3,8 @@
   "version": "1.0.0",
   "description": "Dmitri's Blog",
   "scripts": {
-    "build": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --formats=11ty.ts,11ty.tsx",
-    "start": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --formats=11ty.ts,11ty.tsx --serve --incremental",
+    "build": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --formats=md,11ty.js,11ty.ts,11ty.tsx",
+    "start": "tsx node_modules/@11ty/eleventy/cmd.cjs --config=eleventy.config.ts --formats=md,11ty.js,11ty.ts,11ty.tsx --serve --incremental",
     "css:build": "postcss --output theme/static/style.css theme/templates/style.css",
     "css:dev": "postcss --watch --output theme/static/style.css theme/templates/style.css"
   },
