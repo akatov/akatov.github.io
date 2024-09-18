@@ -1,4 +1,4 @@
-name: Deploy Weblorg site to Pages
+name: Deploy 11ty site to Pages
 on:
   push:
     branches:
@@ -19,29 +19,24 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: checkout
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: setup node.js
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 20.x
 
-      - name: generate CSS
-        run: npm ci && npm run css:build
+      - name: install dependencies
+        run: npm ci
 
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+      - name: build blog
+        run: npm run build
 
-      - name: Publish Org Files
-        uses: maker2413/weblorg-action@v1.0.0
-        with:
-          pre_build_script: pre-prod.sh
-
-      - name: Upload artifact
+      - name: upload built blog
         uses: actions/upload-pages-artifact@v2
         with:
-          path: output
+          path: _site
 
   deploy:
     needs: build

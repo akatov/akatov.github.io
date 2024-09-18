@@ -1,0 +1,28 @@
+---
+title: Dmitri 4
+layout: base.njk
+startCount: 6
+---
+
+import { Counter } from './counter'
+import { Heading } from '../src/components/Heading'
+
+export function MyComp(props) {
+  return <span>My Component</span>
+}
+
+## Dmitri 4 {props.title}
+
+this is with MDX with a <button>button</button>.
+
+This is <MyComp />.
+
+And this is <Counter start={props.startCount} />.
+
+And this is:
+
+<Heading />
+
+export const serializeEleventyProps = (props) => ({
+  startCount: props.startCount,
+});

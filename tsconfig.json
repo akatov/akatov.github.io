@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "module": "ESNext",
+    "noEmit": true,
+    "target": "ESNext",
+    "moduleResolution": "Node",
+    "skipLibCheck": true,
+    "jsx": "react-jsxdev"
+  },
+  "include": ["src", "pages"],
+  "exclude": ["node_modules", "_site"]
+}

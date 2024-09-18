@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./theme/templates/*.html",
-    "./posts/*.org",
+    "./src/**/*",
+    "./pages/**/*",
   ],
   safelist: [
     "note",
