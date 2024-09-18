@@ -1,5 +1,6 @@
 // import "tsx/esm";
 import { renderToStaticMarkup } from "react-dom/server";
+import { jsxToString } from "jsx-async-runtime";
 
 export default function (eleventyConfig) {
   // We can add support for JSX too, at the same time:
@@ -12,6 +13,11 @@ export default function (eleventyConfig) {
     //     return renderToStaticMarkup(content);
     //   };
     // },
+  });
+
+  eleventyConfig.addTransform("tsx", async (content: any) => {
+    const result = await jsxToString(content);
+    return `<!doctype html>\n${result}`;
   });
 
   return {
