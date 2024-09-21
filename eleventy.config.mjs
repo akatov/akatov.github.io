@@ -9,6 +9,7 @@ import { renderToStaticMarkup } from "react-dom/server.js";
 // register("@mdx-js/node-loader", import.meta.url);
 import mdx from "@jamshop/eleventy-plugin-mdx";
 import bundle from '@11ty/eleventy-plugin-bundle';
+import drafts from './eleventy-plugin-drafts.mjs';
 
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
@@ -61,6 +62,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(mdx, { includeCDNLinks: true });
   eleventyConfig.addPlugin(bundle);
 	eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
+  eleventyConfig.addPlugin(drafts);
 
   // Output year for copyright notices
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
