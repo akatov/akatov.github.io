@@ -5,6 +5,6 @@ type HeadingProps = {
 };
 
 export const Heading = ({ name = "TSX" }: HeadingProps) =>
-  <h1 style={{ "backgroundColor": "orange", color: "purple" }}>
+  <h1 className="bg-orange-500 text-purple-500">
     Hello {name}
   </h1>

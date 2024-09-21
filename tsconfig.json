@@ -1,13 +1,23 @@
 {
   "compilerOptions": {
     "allowSyntheticDefaultImports": true,
+    "baseUrl": "./",
+    "jsx": "react-jsxdev",
     "module": "ESNext",
     "noEmit": true,
-    "target": "ESNext",
     "moduleResolution": "Node",
+    "paths": {
+      "$/*": ["src/*"]
+    },    
     "skipLibCheck": true,
-    "jsx": "react-jsxdev"
+    "target": "ESNext",
   },
-  "include": ["src", "pages"],
-  "exclude": ["node_modules", "_site"]
+  "include": [
+    "pages",
+    "src"
+  ],
+  "exclude": [
+    "_dist",
+    "node_modules"
+  ]
 }

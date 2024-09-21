@@ -1,7 +1,7 @@
-import React from "react";
+// import React from "react";
 
-import { Heading } from "../components/Heading";
-import { ViewProps } from "../eleventy";
+import { Heading } from "$/components/Heading";
+import { ViewProps } from "$/eleventy";
 
 export const MainLayout = <T extends Partial<ViewProps>>({
   content,

@@ -1,3 +1,5 @@
+import syntaxhighlight from "@11ty/eleventy-plugin-syntaxhighlight";
+import { DateTime } from "luxon";
 import "tsx/esm";
 // import "@mdx-js/node-loader";
 import rss from "@11ty/eleventy-plugin-rss";
@@ -5,7 +7,8 @@ import navigation from "@11ty/eleventy-navigation";
 import { renderToStaticMarkup } from "react-dom/server.js";
 // import { register } from "node:module";
 // register("@mdx-js/node-loader", import.meta.url);
- import mdx from "@jamshop/eleventy-plugin-mdx";
+import mdx from "@jamshop/eleventy-plugin-mdx";
+import bundle from '@11ty/eleventy-plugin-bundle';
 
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
@@ -21,53 +24,25 @@ export default function (eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.addPassthroughCopy({ public: "." });
   eleventyConfig.addPassthroughCopy({ "_dist/assets": "assets" });
+	eleventyConfig.addPassthroughCopy({
+    "node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
+  });
 
   eleventyConfig.addExtension(["11ty.jsx", "11ty.ts", "11ty.tsx"], {
     key: "11ty.js",
-    compile: function (...args) {
+    compile: function () {
       return async function (data) {
-        const self = this;
-        const rendered = await this.defaultRenderer(data);
-        const child = undefined; // rendered.props.children[1].props.children;
-        // console.info("compile tsx", { args, self, data, rendered, child });
-        return rendered;
-      }
-    }
+        return await this.defaultRenderer(data);
+      };
+    },
   });
 
-  // eleventyConfig.addExtension("mdx", {
-  //   key: "11ty.js",
-  //   compile: async (args) => {
-  //     // console.info({ args });
-  //     return async function (data) {
-  //       const self = this;
-  //       const rendered = await this.defaultRenderer(data);
-  //       const markup = renderToStaticMarkup(rendered);
-  //       console.info("compile mdx", { args, self, data, rendered, markup, result });
-  //       return markup;
-  //     };
-  //   },
-  // });
-
-  eleventyConfig.addTransform("tsx", async (content) => {
-    return typeof content === 'object' && content['$$typeof'] === Symbol.for('react.element') ? renderToStaticMarkup(content) : content;
-    let result;
-    if (typeof content === 'string') {
-      if (content.includes('abracadabra')) {
-      // if this has already been processed, e.g. a *.md or *.11ty.{js,ts,jsx,tsx} file
-        console.info("ABRACADABRA transform tsx: content is string")
-      }
-      result = content;
-    } else {
-      // content is 
-      // result = await jsxToString(content);
-      const child = undefined; // content.props.children[1].props.children
-      result = renderToStaticMarkup(content);
-      console.info("transform tsx", { content, child, result });
-    }
-    return result;
-    return `<!doctype html>\n${result}`;
-  });
+  eleventyConfig.addTransform("tsx", async (content) =>
+    typeof content === "object" &&
+      content["$$typeof"] === Symbol.for("react.element")
+      ? renderToStaticMarkup(content)
+      : content
+  );
 
   // eleventyConfig.addExtension(["mdx"], {
   //   key: "11ty.js",
@@ -84,9 +59,59 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(rss);
   eleventyConfig.addPlugin(navigation);
   eleventyConfig.addPlugin(mdx, { includeCDNLinks: true });
+  eleventyConfig.addPlugin(bundle);
+	eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
 
   // Output year for copyright notices
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
+	eleventyConfig.addShortcode("currentBuildDate", () => {
+    return new Date().toISOString();
+  });
+
+  // Filters
+  eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
+    // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
+    return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
+      format || "dd LLLL yyyy"
+    );
+  });
+
+  eleventyConfig.addFilter("htmlDateString", (dateObj) => {
+    // dateObj input: https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
+    return DateTime.fromJSDate(dateObj, { zone: "utc" }).toFormat("yyyy-LL-dd");
+  });
+
+  // Get the first `n` elements of a collection.
+  eleventyConfig.addFilter("head", (array, n) => {
+    if (!Array.isArray(array) || array.length === 0) {
+      return [];
+    }
+    if (n < 0) {
+      return array.slice(n);
+    }
+
+    return array.slice(0, n);
+  });
+
+  // Return the smallest number argument
+  eleventyConfig.addFilter("min", (...numbers) => {
+    return Math.min.apply(null, numbers);
+  });
+
+  // Return all the tags used in a collection
+  eleventyConfig.addFilter("getAllTags", (collection) => {
+    let tagSet = new Set();
+    for (let item of collection) {
+      (item.data.tags || []).forEach((tag) => tagSet.add(tag));
+    }
+    return Array.from(tagSet);
+  });
+
+  eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
+    return (tags || []).filter(
+      (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+    );
+  });
 
   eleventyConfig.addWatchTarget("./src");
   eleventyConfig.addWatchTarget("./pages");

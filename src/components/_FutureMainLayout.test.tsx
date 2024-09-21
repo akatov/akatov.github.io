@@ -1,7 +1,7 @@
 import { expect, test } from "vitest";
 // import { jsxToString } from "jsx-async-runtime";
 import { renderToStaticMarkup } from "react-dom/server";
-import { MainLayout } from "./MainLayout.11ty";
+import { MainLayout } from "./_FutureMainLayout.11ty";
 import { screen } from "@testing-library/dom";
 // import { ViewProps } from "../eleventy";
 
