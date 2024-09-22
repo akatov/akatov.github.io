@@ -1,7 +1,6 @@
 ---
 title: Writing Ruby C Extensions
 date: 2015-07-16
-draft: true
 permalink: /{{ title | slug }}/
 ---
 
