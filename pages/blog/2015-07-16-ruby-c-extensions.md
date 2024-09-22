@@ -2,6 +2,9 @@
 title: Writing Ruby C Extensions
 date: 2015-07-16
 permalink: /{{ title | slug }}/
+tags:
+  - ruby
+  - c
 ---
 
 This post is inspired by Writing Ruby C Extensions
