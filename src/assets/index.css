@@ -1,4 +1,4 @@
 @import './11ty-template.css';
 @import '../../node_modules/prismjs/themes/prism-okaidia.css';
 @import './prism-diff.css';
-/* @import './style.css'; */
+@import './style.css';

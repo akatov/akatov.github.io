@@ -36,6 +36,7 @@
     "happy-dom": "^15.7.4",
     "jsx-async-runtime": "^0.5.1",
     "luxon": "^3.5.0",
+    "markdown-it-attrs": "^4.2.0",
     "postcss": "8.4.31",
     "postcss-cli": "10.1.0",
     "postcss-import": "^15.1.0",

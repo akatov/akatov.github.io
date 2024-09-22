@@ -1,3 +1,4 @@
+import mdAttrs from 'markdown-it-attrs';
 import syntaxhighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { DateTime } from "luxon";
 import "tsx/esm";
@@ -114,6 +115,8 @@ export default function (eleventyConfig) {
       (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
     );
   });
+
+  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(mdAttrs));
 
   eleventyConfig.addWatchTarget("./src");
   eleventyConfig.addWatchTarget("./pages");

@@ -1,8 +1,8 @@
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
-    "./src/**/*",
-    "./pages/**/*",
+    "./src/**/*.md",
+    "./pages/**/*.md",
   ],
   safelist: [
     "note",
