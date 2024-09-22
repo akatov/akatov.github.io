@@ -45,8 +45,11 @@
   p {
     @apply text-[15px]/[25px] pb-[20px];
   }
+  h1 {
+    @apply text-3xl font-bold mb-4;
+  }
   h2 {
-    @apply text-2xl font-bold;
+    @apply text-2xl font-bold mb-3;
   }
 
   /* -- table -- */
@@ -83,4 +86,9 @@
     /* @apply border-cl-border-src; // this is missing! */
     @apply py-0 px-[15px] max-w-[100%] overflow-y-scroll rounded-[5px];
   }
+
+}
+
+.post-metadata {
+  @apply mb-4;
 }
