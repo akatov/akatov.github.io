@@ -117,6 +117,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addWatchTarget("./src");
   eleventyConfig.addWatchTarget("./pages");
+  eleventyConfig.addWatchTarget("./public");
 
   return {
     dir: {
