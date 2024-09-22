@@ -36,7 +36,7 @@ jobs:
       - name: upload built blog
         uses: actions/upload-pages-artifact@v2
         with:
-          path: _site
+          path: _dist/site
 
   deploy:
     needs: build
