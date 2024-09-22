@@ -1,6 +1,7 @@
 ---
 title: Including Tachyons in a Jekyll Blog
 date: 2017-08-05
+permalink: /{{ title | slug }}/
 ---
 
 [//]: # "markdown-it-attrs does not have comments, so we use this workaround instead"

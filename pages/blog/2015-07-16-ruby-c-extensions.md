@@ -2,6 +2,7 @@
 title: Writing Ruby C Extensions
 date: 2015-07-16
 draft: true
+permalink: /{{ title | slug }}/
 ---
 
 This post is inspired by Writing Ruby C Extensions
