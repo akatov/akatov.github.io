@@ -12,13 +12,6 @@
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		<meta name="generator" content="{{ eleventy.generator }}">
-
-		
-
-		{#- Render the CSS bundle using Inlined CSS (for the fastest site performance in production) #}
-		<style>{% getBundle "css" %}</style>
-		{#- Renders the CSS bundle using a separate file, if you can't set CSP directive style-src: 'unsafe-inline' #}
-		{#- <link rel="stylesheet" href="{% getBundleFileUrl "css" %}"> #}
     <link rel="stylesheet" href="/assets/index.css" type="text/css" />
 	</head>
 	<body>
