@@ -1,0 +1,15 @@
+{
+  "recommendations": [
+    // Markdown
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+ 
+    // Typescript
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+
+    // General
+    "eamodio.gitlens",
+    "usernamehw.errorlens",
+  ]
+}
