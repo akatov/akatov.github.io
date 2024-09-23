@@ -5,10 +5,7 @@
   "editor.guides.bracketPairs": "active",
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "typescript.tsdk": "node_modules/typescript/lib",
-  "stylelint.validate": [
-    "typescript",
-    "typescriptreact"
-  ],
+  "stylelint.validate": ["typescript", "typescriptreact"],
   "[json]": {
     "editor.tabSize": 2,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -25,9 +22,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll.stylelint": "explicit"
-    },
     "editor.formatOnSave": true,
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   }

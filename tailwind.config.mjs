@@ -1,9 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    "./src/**/*.md",
-    "./pages/**/*.md",
-  ],
+  content: ["./src/**/*.md", "./pages/**/*.md"],
   safelist: [
     "note",
     "org-builtin",
@@ -38,11 +35,8 @@ export default {
       },
     },
     fontFamily: {
-      "serif": [
-        "Lora",
-        "serif",
-      ]
-    }
+      serif: ["Lora", "serif"],
+    },
   },
   plugins: [],
 };

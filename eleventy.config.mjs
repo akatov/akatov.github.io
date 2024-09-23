@@ -1,4 +1,4 @@
-import mdAttrs from 'markdown-it-attrs';
+import mdAttrs from "markdown-it-attrs";
 import syntaxhighlight from "@11ty/eleventy-plugin-syntaxhighlight";
 import { DateTime } from "luxon";
 import "tsx/esm";
@@ -9,9 +9,9 @@ import { renderToStaticMarkup } from "react-dom/server.js";
 // import { register } from "node:module";
 // register("@mdx-js/node-loader", import.meta.url);
 import mdx from "@jamshop/eleventy-plugin-mdx";
-import bundle from '@11ty/eleventy-plugin-bundle';
-import drafts from './eleventy-plugin-drafts.mjs';
-import vite from '@11ty/eleventy-plugin-vite';
+import bundle from "@11ty/eleventy-plugin-bundle";
+import drafts from "./eleventy-plugin-drafts.mjs";
+import vite from "@11ty/eleventy-plugin-vite";
 
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
@@ -45,7 +45,7 @@ export default function (eleventyConfig) {
     typeof content === "object" &&
     content["$$typeof"] === Symbol.for("react.element")
       ? renderToStaticMarkup(content)
-      : content
+      : content,
   );
 
   // eleventyConfig.addExtension(["mdx"], {
@@ -78,7 +78,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addFilter("readableDate", (dateObj, format, zone) => {
     // Formatting tokens for Luxon: https://moment.github.io/luxon/#/formatting?id=table-of-tokens
     return DateTime.fromJSDate(dateObj, { zone: zone || "utc" }).toFormat(
-      format || "dd LLLL yyyy"
+      format || "dd LLLL yyyy",
     );
   });
 
@@ -115,7 +115,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addFilter("filterTagList", function filterTagList(tags) {
     return (tags || []).filter(
-      (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1
+      (tag) => ["all", "nav", "post", "posts"].indexOf(tag) === -1,
     );
   });
 

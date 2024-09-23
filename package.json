@@ -9,6 +9,8 @@
     "test:run": "vitest run",
     "test:dev": "vitest watch",
     "tsc": "npx tsc --extendedDiagnostics",
+    "prettier:check": "npx prettier --check .",
+    "prettier:write": "npx prettier --check . --write",
     "eslint": "npx eslint --cache --ext .js,.ts,.tsx ./"
   },
   "repository": {
