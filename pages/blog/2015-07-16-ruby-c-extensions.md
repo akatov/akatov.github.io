@@ -57,7 +57,7 @@ let's convert the existing test.
 Now, let's add a first real test.
 
 ```ruby
-# test/test\_stree.rb
+# test/test_stree.rb
 describe Stree do
   it 'should return "hello world"' do
     _(Stree.hello_world).must_equal 'hello world'
@@ -81,8 +81,11 @@ mkdir -p ext/$(basename $(pwd))
 Inside the above directory we put an `extconf.rb` which will generate a
 `Makefile` which in turn can be used to build the C code.
 
-{% highlight ruby %} # ext/stree/extconf.rb require 'mkmf'
-create\_makefile 'stree' {% endhighlight %}
+```ruby
+# ext/stree/extconf.rb
+require 'mkmf'
+create_makefile 'stree'
+```
 
 You can test `extconf.rb` by running `ruby ext/stree/extconf.rb` which
 should create a `Makefile`. Running `make` gives "make: Nothing to be
