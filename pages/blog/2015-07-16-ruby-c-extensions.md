@@ -1,7 +1,7 @@
 ---
 title: Writing Ruby C Extensions
 date: 2015-07-16
-permalink: /{{ title | slug }}/
+permalink: /blog/{{ title | slug }}/
 tags:
   - ruby
   - c
