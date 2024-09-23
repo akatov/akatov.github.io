@@ -24,7 +24,7 @@
   },
   "homepage": "https://github.com/akatov/akatov.github.io#readme",
   "type": "module",
-  "devDependencies": {
+  "dependencies": {
     "@11ty/eleventy": "3.0.0-alpha.20",
     "@11ty/eleventy-navigation": "^0.3.5",
     "@11ty/eleventy-plugin-bundle": "^2.0.2",
