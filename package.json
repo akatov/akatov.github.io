@@ -3,11 +3,9 @@
   "version": "1.0.0",
   "description": "Dmitri's Blog",
   "scripts": {
-    "build": "npm run css:build && npm run 11ty:build",
+    "build": "npm run 11ty:build",
     "11ty:build": "npx @11ty/eleventy",
     "11ty:dev": "npx @11ty/eleventy --serve --incremental",
-    "css:build": "postcss --output _dist/assets/index.css src/assets/index.css",
-    "css:dev": "postcss --watch --output _dist/assets/index.css src/assets/index.css",
     "test:run": "vitest run",
     "test:dev": "vitest watch"
   },
