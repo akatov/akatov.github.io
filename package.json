@@ -28,6 +28,7 @@
     "@11ty/eleventy-plugin-bundle": "^2.0.2",
     "@11ty/eleventy-plugin-rss": "^2.0.2",
     "@11ty/eleventy-plugin-syntaxhighlight": "^5.0.0",
+    "@11ty/eleventy-plugin-vite": "^4.0.0",
     "@jamshop/eleventy-plugin-mdx": "^0.0.17",
     "@mdx-js/node-loader": "^3.0.1",
     "@testing-library/dom": "^10.4.0",

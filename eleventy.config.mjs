@@ -11,6 +11,7 @@ import { renderToStaticMarkup } from "react-dom/server.js";
 import mdx from "@jamshop/eleventy-plugin-mdx";
 import bundle from '@11ty/eleventy-plugin-bundle';
 import drafts from './eleventy-plugin-drafts.mjs';
+import vite from '@11ty/eleventy-plugin-vite';
 
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
@@ -64,6 +65,7 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(bundle);
 	eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
   eleventyConfig.addPlugin(drafts);
+  eleventyConfig.addPlugin(vite, {});
 
   // Output year for copyright notices
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
@@ -124,11 +126,11 @@ export default function (eleventyConfig) {
 
   return {
     dir: {
-      input: "pages",
+      input: "./pages",
       data: "../src/data",
       layouts: "../src/layouts",
       includes: "../src/includes",
-      output: "_dist/site",
+      output: "./_dist/site",  // vite plugin needs this to start with "./"
     },
   };
 }
