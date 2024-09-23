@@ -1,3 +1,5 @@
+const tsconfigNodeJson = require("./tsconfig.node.json");
+
 module.exports = {
   root: true,
   parser: "@typescript-eslint/parser",
@@ -13,7 +15,7 @@ module.exports = {
   ignorePatterns: ["_dist/**", ".eslintrc.cjs"],
   overrides: [
     {
-      files: ["vitest.config.ts"],
+      files: tsconfigNodeJson.include,
       parserOptions: {
         ecmaVersion: 8,
         sourceType: "module",
