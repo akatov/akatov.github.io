@@ -65,7 +65,7 @@ Let's look up what all these classnames mean on
 [tachyons tldr](https://tachyons-tldr.now.sh/#/classes).
 
 | Class       | [Acrostic](https://en.wikipedia.org/wiki/Acrostic) | CSS                                                            |
-| ----------- | -------------------------------------------------- | -------------------------------------------------------------- |
+| :---------- | :------------------------------------------------- | :------------------------------------------------------------- |
 | `.fl`       | float left                                         | `float:left; display:inline`                                   |
 | `.w-75`     | width 75%                                          | `width: 75%`                                                   |
 | `.pa2`      | padding all 2units                                 | `padding: .5rem`                                               |
