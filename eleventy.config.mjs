@@ -26,9 +26,10 @@ export default function (eleventyConfig) {
 
   eleventyConfig.setUseGitIgnore(false);
   eleventyConfig.addPassthroughCopy({ public: "." });
-  eleventyConfig.addPassthroughCopy({ "_dist/assets": "assets" });
-	eleventyConfig.addPassthroughCopy({
-    "node_modules/prismjs/themes/prism-okaidia.css": "/css/prism-okaidia.css",
+  // put all assets in one place, in particular so index.css can aggregate them through relative paths
+  eleventyConfig.addPassthroughCopy({ "src/assets": "assets" });
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/prismjs/themes/prism-okaidia.css": "assets/prism-okaidia.css",
   });
 
   eleventyConfig.addExtension(["11ty.jsx", "11ty.ts", "11ty.tsx"], {
@@ -42,7 +43,7 @@ export default function (eleventyConfig) {
 
   eleventyConfig.addTransform("tsx", async (content) =>
     typeof content === "object" &&
-      content["$$typeof"] === Symbol.for("react.element")
+    content["$$typeof"] === Symbol.for("react.element")
       ? renderToStaticMarkup(content)
       : content
   );
@@ -63,13 +64,13 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(navigation);
   eleventyConfig.addPlugin(mdx, { includeCDNLinks: true });
   eleventyConfig.addPlugin(bundle);
-	eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
+  eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
   eleventyConfig.addPlugin(drafts);
   eleventyConfig.addPlugin(vite, {});
 
   // Output year for copyright notices
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
-	eleventyConfig.addShortcode("currentBuildDate", () => {
+  eleventyConfig.addShortcode("currentBuildDate", () => {
     return new Date().toISOString();
   });
 
@@ -130,7 +131,7 @@ export default function (eleventyConfig) {
       data: "../src/data",
       layouts: "../src/layouts",
       includes: "../src/includes",
-      output: "./_dist/site",  // vite plugin needs this to start with "./"
+      output: "./_dist/site", // vite plugin needs this to start with "./"
     },
   };
 }

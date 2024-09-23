@@ -12,7 +12,6 @@
 
 		{#- Uncomment this if you’d like folks to know that you used Eleventy to build your site!  #}
 		<meta name="generator" content="{{ eleventy.generator }}">
-    <link rel="stylesheet" href="/assets/index.css" type="text/css" />
 	</head>
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
@@ -36,6 +35,8 @@
 		</main>
 
 		<footer></footer>
+
+		<script type="module" src="{{ '/assets/index.ts' | url }}"></script>
 
 		<!-- This page `{{ page.url | htmlBaseUrl }}` was built on {% currentBuildDate %} -->
 	</body>
