@@ -8,7 +8,8 @@
     "11ty:dev": "npx @11ty/eleventy --serve --incremental",
     "test:run": "vitest run",
     "test:dev": "vitest watch",
-    "tsc": "npx tsc --extendedDiagnostics"
+    "tsc": "npx tsc --extendedDiagnostics",
+    "eslint": "npx eslint --cache --ext .js,.ts,.tsx ./"
   },
   "repository": {
     "type": "git",
@@ -33,7 +34,15 @@
     "@testing-library/dom": "^10.4.0",
     "@types/react": "17.0.39",
     "@types/react-dom": "17.0.25",
+    "@typescript-eslint/eslint-plugin": "^8.7.0",
+    "@typescript-eslint/parser": "^8.7.0",
     "autoprefixer": "10.4.16",
+    "eslint": "^8.57.1",
+    "eslint-config-prettier": "^9.1.0",
+    "eslint-define-config": "^2.1.0",
+    "eslint-import-resolver-typescript": "^3.6.3",
+    "eslint-plugin-react": "^7.36.1",
+    "eslint-plugin-react-hooks": "^4.6.2",
     "happy-dom": "^15.7.4",
     "jsx-async-runtime": "^0.5.1",
     "luxon": "^3.5.0",

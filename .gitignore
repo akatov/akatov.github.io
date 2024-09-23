@@ -5,3 +5,4 @@ site.el
 theme/static
 output
 _dist
+.eslintcache

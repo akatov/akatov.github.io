@@ -1,23 +1,15 @@
 {
-  "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "baseUrl": "./",
-    "jsx": "react-jsxdev",
-    "module": "ESNext",
-    "noEmit": true,
-    "moduleResolution": "Node",
-    "paths": {
-      "$/*": ["src/*"]
-    },    
-    "skipLibCheck": true,
-    "target": "ESNext",
-  },
-  "include": [
-    "pages",
-    "src"
+  "files": [],
+  "references": [
+    { "path": "./tsconfig.app.json" },
+    { "path": "./tsconfig.node.json" }
   ],
-  "exclude": [
-    "_dist",
-    "node_modules"
-  ]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$/*": [
+        "./src/*"
+      ]
+    }
+  }
 }
