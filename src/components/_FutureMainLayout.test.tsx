@@ -1,3 +1,5 @@
+import React from "react";
+
 import { expect, test } from "vitest";
 // import { jsxToString } from "jsx-async-runtime";
 import { renderToStaticMarkup } from "react-dom/server";

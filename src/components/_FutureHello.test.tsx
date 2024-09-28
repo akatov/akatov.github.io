@@ -1,3 +1,5 @@
+import React from "react";
+
 import { expect, test } from "vitest";
 import { renderToStaticMarkup } from "react-dom/server";
 import { screen } from "@testing-library/dom";

@@ -12,6 +12,7 @@ import mdx from "@jamshop/eleventy-plugin-mdx";
 import bundle from "@11ty/eleventy-plugin-bundle";
 import drafts from "./eleventy-plugin-drafts.mjs";
 import vite from "@11ty/eleventy-plugin-vite";
+import viteConfig from "./vite.config.mjs";
 
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
@@ -66,7 +67,8 @@ export default function (eleventyConfig) {
   eleventyConfig.addPlugin(bundle);
   eleventyConfig.addPlugin(syntaxhighlight, { preAttributes: { tabindex: 0 } });
   eleventyConfig.addPlugin(drafts);
-  eleventyConfig.addPlugin(vite, {});
+  eleventyConfig.addPlugin(vite, viteConfig);
+  // eleventyConfig.addPlugin(vite, {});
 
   // Output year for copyright notices
   eleventyConfig.addShortcode("year", () => `${new Date().getFullYear()}`);
