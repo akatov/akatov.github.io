@@ -8,7 +8,9 @@
     "11ty:dev": "npx @11ty/eleventy --serve --incremental",
     "test:run": "vitest run",
     "test:dev": "vitest watch",
-    "tsc": "npx tsc --extendedDiagnostics",
+    "tsc": "npm run tsc:node && npm run tsc:app",
+    "tsc:node": "npx tsc --project tsconfig.node.json",
+    "tsc:app": "npx tsc --project tsconfig.app.json",
     "prettier:check": "npx prettier --check .",
     "prettier:write": "npx prettier --check . --write",
     "eslint": "npx eslint --cache --ext .js,.ts,.tsx ./"
