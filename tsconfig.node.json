@@ -10,6 +10,9 @@
     "vitest.config.ts",
     "vite.config.mjs",
     "eleventy.config.mjs",
-    "eslint.config.mjs"
+    "eslint.config.mjs",
+    ".prettierrc.mjs",
+    "postcss.config.mjs",
+    "tailwind.config.mjs"
   ]
 }

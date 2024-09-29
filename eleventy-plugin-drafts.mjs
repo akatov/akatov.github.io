@@ -24,6 +24,11 @@ export function eleventyComputedExcludeFromCollections() {
   };
 }
 
+/**
+ *
+ * @param {import('./node_modules/@11ty/eleventy/src/UserConfig')} eleventyConfig
+ * @returns
+ */
 export default (eleventyConfig) => {
   eleventyConfig.addGlobalData(
     "eleventyComputed.permalink",

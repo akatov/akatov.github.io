@@ -5,13 +5,13 @@ import { renderToStaticMarkup } from "react-dom/server";
 import { screen } from "@testing-library/dom";
 import { Heading } from "./_FutureHello";
 
-test("render heading with default name", async () => {
+test("render heading with default name", () => {
   const result = <Heading />;
   document.body.innerHTML = renderToStaticMarkup(result);
   expect(screen.getByText("Hello TSX")).toBeTruthy();
 });
 
-test("render heading with custom name", async () => {
+test("render heading with custom name", () => {
   const result = <Heading name={`World`} />;
   document.body.innerHTML = renderToStaticMarkup(result);
   expect(screen.getByText("Hello World")).toBeTruthy();

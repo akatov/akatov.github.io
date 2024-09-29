@@ -7,7 +7,7 @@ import { MainLayout } from "./_FutureMainLayout.11ty";
 import { screen } from "@testing-library/dom";
 // import { ViewProps } from "../eleventy";
 
-test(MainLayout, async () => {
+test(MainLayout, () => {
   const viewProps = {
     content: "<p>This is <em>the body</em></p>",
     title: "My Site",

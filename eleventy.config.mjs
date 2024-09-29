@@ -14,6 +14,11 @@ import drafts from "./eleventy-plugin-drafts.mjs";
 import vite from "@11ty/eleventy-plugin-vite";
 import viteConfig from "./vite.config.mjs";
 
+/**
+ *
+ * @param {import('./node_modules/@11ty/eleventy/src/UserConfig')} eleventyConfig
+ * @returns
+ */
 export default function (eleventyConfig) {
   // eleventyConfig.addTemplateFormats("md,11ty.js,11ty.ts,11ty.tsx");
   eleventyConfig.addTemplateFormats("md");
