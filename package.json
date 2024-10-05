@@ -36,6 +36,7 @@
     "@11ty/eleventy-plugin-vite": "^4.0.0",
     "@eslint/js": "^8.57.1",
     "@jamshop/eleventy-plugin-mdx": "^0.0.17",
+    "@kevingimbel/eleventy-plugin-mermaid": "^2.2.1",
     "@mdx-js/node-loader": "^3.0.1",
     "@testing-library/dom": "^10.4.0",
     "@types/react": "17.0.39",
