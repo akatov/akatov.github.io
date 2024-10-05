@@ -13,6 +13,7 @@ import bundle from "@11ty/eleventy-plugin-bundle";
 import drafts from "./eleventy-plugin-drafts.mjs";
 import vite from "@11ty/eleventy-plugin-vite";
 import mermaid from "@kevingimbel/eleventy-plugin-mermaid";
+import mathjax3 from "markdown-it-mathjax3";
 
 import viteConfig from "./vite.config.mjs";
 
@@ -129,7 +130,10 @@ export default function (eleventyConfig) {
     );
   });
 
-  eleventyConfig.amendLibrary("md", (mdLib) => mdLib.use(mdAttrs));
+  eleventyConfig.amendLibrary("md", (mdLib) => {
+    mdLib.use(mdAttrs);
+    mdLib.use(mathjax3);
+  });
 
   eleventyConfig.addWatchTarget("./src");
   eleventyConfig.addWatchTarget("./pages");
