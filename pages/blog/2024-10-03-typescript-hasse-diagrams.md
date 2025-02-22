@@ -24,7 +24,7 @@ E.g. if both `TA` and `TB` are object types, then `const b: TB = { /* somethinig
 
 Types can be thought of as sets of possible values.
 A value `v` has type `T` then means $v \in T$.
-And `T1 extends T2` then means $T1 \subset T2$.
+And `T1 extends T2` then means $T1 \subseteq T2$.
 
 ### Top and Bottom
 
@@ -38,7 +38,7 @@ T --> unknown
 ```
 
 In mathematical terms think of it as $\text{never} = \emptyset$, and $\text{unknown} = U$, where `U` is the set of all possible TypeScript values.
-So `v: never` means that `v` cannot exist (since it would be an element of the empty set), and `w: unknown` means that `w` could be any vaule.
+So `let v: never` means that `v` cannot exist (since it would be an element of the empty set), and `let w: unknown` means that `w` could be any vaule.
 
 The TypeScript `any` type behaves differently.
 It simply turns off the typechecker and has no mathematical meaning.
@@ -46,7 +46,7 @@ Avoid it if you can.
 
 ### Union and Intersection
 
-For any types `TA`, `TB`, the union type `TA | TB` can be thought of as the mathematical $TA \cap TB$ and the intersection type `TA & TB` can be thought of as the mathematical $TA \cup TB$.
+For any types `TA`, `TB`, the union type `TA | TB` can be thought of as the mathematical $TA \cup TB$ and the intersection type `TA & TB` can be thought of as the mathematical $TA \cap TB$.
 Then obviously the following holds:
 
 ```mermaid
@@ -63,9 +63,9 @@ TABU --> unknown
 along with any other laws for sets as boolean algebras.
 
 Intersection only really makes sense for object types.
-Otherwise it can easily end up as `never` (e.g. `number | string = never`).
+Otherwise it can easily end up as `never` (e.g. `number & string == never`).
 
-## Basic Type
+## Basic Types
 
 ```mermaid
 flowchart BT
@@ -82,14 +82,17 @@ bigint --> unknown
 
 ### Literals and Basic Unions
 
+Individual strings and numbers can be their own types.
+Think of the type `"ab"` as $\{\text{"ab"}\}$, and of the type `42` as $\{42\}$.
+
 ```mermaid
 flowchart BT
 
 never --> ab["'ab'"]
-never --> 0
+never --> 42
 never --> true
 ab --> string
-0 --> number
+42 --> number
 true --> boolean
 
 string --> numberstring
@@ -131,7 +134,7 @@ stringnumber --> unknown
 ## Objects
 
 The type `object` means any object (this includes functions, since in JS every function is also an object).
-The type `{}` means "any non-nullish value". I.e. $\text{\{\}} = \text{unknown} \setminus \{ \text{null} \} \setminus \{ \text{undefined} \}$.
+The type `{}` means "any non-nullish value". I.e. $\text{\{\}} = \text{unknown} \setminus \{ \text{null}, \text{undefined} \}$.
 
 ```mermaid
 flowchart BT
@@ -179,7 +182,7 @@ See [TypeScript documentation](https://www.typescriptlang.org/docs/handbook/type
 For historical reasons, Typescript has two `nil` values, `null` and `undefined`.
 
 The type `null` has exactly one value `null`.
-The type `undefined` has exactly one value `undefined.
+The type `undefined` has exactly one value `undefined`.
 
 There is also a special type `void` which apart from `never` and `unknown` is not comparable to any other type.
 
